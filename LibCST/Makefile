@@ -8,6 +8,6 @@ build:
 	docker build -t libcst:latest . --build-arg PYTHON_VERSION=3.10.1
 
 run:
-	docker run -it -v ${LIBCST_DIR}:/root/LibCST libcst:latest bash -c "cd /root/LibCST && bash"
+	docker run -it -v ${LIBCST_DIR}:/root/LibCST libcst:latest bash
 
 .DEFAULT_GOAL := build

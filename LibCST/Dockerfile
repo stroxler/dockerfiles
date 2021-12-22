@@ -48,3 +48,9 @@ RUN pip install -r /root/libcst-deps/requirements-dev.txt
 COPY libcst-deps/native /root/libcst-deps/native
 RUN cd /root/libcst-deps/native && cargo fetch
 
+
+## Wrapping up ##
+
+# here's the mount point:
+
+WORKDIR /root/LibCST
