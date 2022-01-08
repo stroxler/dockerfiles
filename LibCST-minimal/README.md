@@ -12,32 +12,28 @@ make run
 ```
 and then inside the docker shell run
 ```
+
+# install dependencies and build libcst
+#
 pip install -r requirements.txt -r requirements-dev.txt
-
-# It seems like the cargo build might be necessary?
-# - if you try to pip install off the bat, it seems to hang.
-# - I may be wrong about that though
-#   - the very first cargo build takes a long time because of
-#     pyo3
-#   - cargo prints progress, pip doesn't, so maybe me thinking
-#     it's hanging is just because it takes too long with no
-$     feedback
-cd native && cargo build && cd /root/LibCST
-
 pip install -e .
-```
 
-Now you can test it out:
-```bash
-LIBCST_PARSER=native python3 -c '
+
+# Test it out, using the native parser
+#
+LIBCST_PARSER_TYPE=native python3 -c '
 
 import libcst
 
 module = libcst.parse_module("""
-with (f,
-      g): pass
+# this code wouldn't parse without the native parser
+try:
+    pass
+except* OSError as e:
+    pass
 """)
 
 print(module)
 '
+
 ```
