@@ -28,6 +28,11 @@ RUN pip install --upgrade pip
 RUN apt-get install -y watchman
 RUN pip install pyre-check==$PYRE_VERSION
 
+# install some basic dev tools that you might need if you're
+# going to code the example from in container (as opposed to
+# mounting the code and editing natively)
+RUN apt-get install -y vim neovim emacs tree
+
 # download the tutorial
 
 RUN git clone https://github.com/fbsamples/python-typing-tutorial.git
